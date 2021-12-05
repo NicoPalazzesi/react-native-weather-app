@@ -1,10 +1,19 @@
-import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
+import {
+  NavigationContainer,
+  NavigatorScreenParams
+} from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import WeatherStack from "./navigators/WeatherNavigators";
+import WeatherStack, {
+  WeatherStackParamsList
+} from "./navigators/WeatherNavigators";
 
-const Stack = createStackNavigator();
+type AppStackParamsList = {
+  WeatherStack: NavigatorScreenParams<WeatherStackParamsList>;
+};
+
+const Stack = createStackNavigator<AppStackParamsList>();
 
 const App = () => (
   <NavigationContainer>

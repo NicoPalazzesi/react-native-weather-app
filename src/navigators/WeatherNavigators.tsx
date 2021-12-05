@@ -4,7 +4,12 @@ import WeatherHomeScreen from "../screens/WeatherHomeScreen/WeatherHomeScreen";
 import WeatherDetailsScreen from "../screens/WeatherDetailsScreen/WeatherDetailsScreen";
 import Header from "./components/Header";
 
-const Stack = createStackNavigator();
+export type WeatherStackParamsList = {
+  WeatherHomeScreen: undefined;
+  WeatherDetailsScreen: undefined;
+};
+
+const Stack = createStackNavigator<WeatherStackParamsList>();
 
 const WeatherStack = () => {
   return (

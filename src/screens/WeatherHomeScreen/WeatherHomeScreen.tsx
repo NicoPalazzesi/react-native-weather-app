@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { WeatherStackParamsList } from "../../navigators/WeatherNavigators";
 
 const styles = StyleSheet.create({
   container: {
@@ -14,7 +16,9 @@ const styles = StyleSheet.create({
 });
 
 const WeatherHomeScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<
+    StackNavigationProp<WeatherStackParamsList, "WeatherHomeScreen">
+  >();
 
   const goToWeatherDetails = () => {
     navigation.navigate("WeatherDetailsScreen");
