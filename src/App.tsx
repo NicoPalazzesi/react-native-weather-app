@@ -4,6 +4,8 @@ import {
   NavigatorScreenParams
 } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "./api/apolloClient";
 
 import WeatherStack, {
   WeatherStackParamsList
@@ -16,11 +18,13 @@ type AppStackParamsList = {
 const Stack = createStackNavigator<AppStackParamsList>();
 
 const App = () => (
-  <NavigationContainer>
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name={"WeatherStack"} component={WeatherStack} />
-    </Stack.Navigator>
-  </NavigationContainer>
+  <ApolloProvider client={client}>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name={"WeatherStack"} component={WeatherStack} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  </ApolloProvider>
 );
 
 export default App;
