@@ -17,7 +17,7 @@ const WeatherStack = () => {
     <Stack.Screen
       name={"WeatherHomeScreen"}
       component={WeatherHomeScreen}
-      options={{ title: "Menú principal" }}
+      options={{ title: "Clima" }}
     />
     <Stack.Screen
       name={"WeatherDetailsScreen"}
