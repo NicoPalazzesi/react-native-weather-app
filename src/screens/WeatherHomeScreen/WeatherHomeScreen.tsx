@@ -1,35 +1,23 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { WeatherStackParamsList } from "../../navigators/WeatherNavigators";
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "blue",
-  },
-});
+import React, { useEffect } from "react";
+import { useGetWeatherById } from "../../api/weatherService/useGetWeatherById";
+import { citiesArray } from "../../constants/constants";
+import ContainerParent from "../../components/ContainerParent";
+import WeatherList from "./components/WeatherList";
+import { showToast } from "../../components/Toast";
 
 const WeatherHomeScreen = () => {
-  const navigation = useNavigation<
-    StackNavigationProp<WeatherStackParamsList, "WeatherHomeScreen">
-  >();
+  const { loading, weather, error } = useGetWeatherById(citiesArray);
 
-  const goToWeatherDetails = () => {
-    navigation.navigate("WeatherDetailsScreen");
-  }
+  useEffect(() => {
+    if (error) {
+      showToast("Ocurrió un error");
+    }
+  }, [error]);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.buttonText} onPress={goToWeatherDetails}>
-        Ir a detalles
-      </Text>
-    </View>
+    <ContainerParent loading={loading}>
+      <WeatherList weather={weather} />
+    </ContainerParent>
   )
 }
 
