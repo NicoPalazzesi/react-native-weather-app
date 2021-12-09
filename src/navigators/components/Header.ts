@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { StackNavigationOptions } from "@react-navigation/stack";
+import FontSize from "../../constants/FontSize";
 
 const styles = StyleSheet.create({
   headerStyle: {
@@ -7,7 +8,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0,
   },
   headerTitleStyle: {
-    fontSize: 16,
+    fontSize: FontSize.title,
   },
 });
 

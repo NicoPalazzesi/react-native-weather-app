@@ -1,12 +1,13 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Colors from "../constants/Colors";
 import Loader from "./Loader";
 
 type ContainerParentProps = {
   loading?: boolean;
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
 };
 
 const styles = StyleSheet.create({
@@ -16,8 +17,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const ContainerParent = ({ loading, children }: ContainerParentProps) => (
-  <SafeAreaView style={styles.container}>
+const ContainerParent = (
+  { loading, children, style }: ContainerParentProps
+) => (
+  <SafeAreaView style={[styles.container, style]}>
     {loading && <Loader loading={loading}/>}
     {children}
   </SafeAreaView>

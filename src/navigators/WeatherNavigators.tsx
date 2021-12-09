@@ -6,7 +6,9 @@ import Header from "./components/Header";
 
 export type WeatherStackParamsList = {
   WeatherHomeScreen: undefined;
-  WeatherDetailsScreen: undefined;
+  WeatherDetailsScreen: {
+    id: string;
+  };
 };
 
 const Stack = createStackNavigator<WeatherStackParamsList>();
@@ -22,7 +24,7 @@ const WeatherStack = () => {
     <Stack.Screen
       name={"WeatherDetailsScreen"}
       component={WeatherDetailsScreen}
-      options={{ title: "Detalles" }}
+      options={{ title: "" }}
     />
   </Stack.Navigator>
   );
