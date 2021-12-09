@@ -1,9 +1,10 @@
 import { gql, useQuery } from "@apollo/client";
+import { GetWeatherByIdResponse } from "./types";
 
 export const useGetWeatherById = (
   id: string[],
   config = { units: "metric", lang: "sp" },
-) => {
+): GetWeatherByIdResponse => {
   const GET_WEATHER_BY_ID = gql`
     query GetWeatherById($id: [String!], $config: ConfigInput) {
       getCityById(id: $id, config: $config) {
